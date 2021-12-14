@@ -191,7 +191,7 @@ switch ( $step ) {
 		printf(
 			/* translators: %s: Documentation URL. */
 			__( 'Need more help? <a href="%s">We got it</a>.' ),
-			__( 'http://wordpress.org/support/article/editing-wp-config-php/' )
+			__( 'https://wordpress.org/support/article/editing-wp-config-php/' )
 		);
 		?>
 </p>
