@@ -1,4 +1,5 @@
 # Wordpress on Google Cloud Run
+This wordpress setup is inspired from this article: https://lawrence.aritao.dev/deploying-wordpress-on-cloud-run-in-2021-d2f3c58b039b. Credits to the author Lawrence Aritao, and also Peter Kracik who had the original post
 
 ## Build and deploy
 ```bash
