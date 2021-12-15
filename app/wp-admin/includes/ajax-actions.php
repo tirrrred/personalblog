@@ -3003,9 +3003,7 @@ function wp_ajax_query_attachments() {
 		$total_posts = $count_query->found_posts;
 	}
 
-	$posts_per_page = (int) $attachments_query->get( 'posts_per_page' );
-
-	$max_pages = $posts_per_page ? ceil( $total_posts / $posts_per_page ) : 0;
+	$max_pages = ceil( $total_posts / (int) $attachments_query->query['posts_per_page'] );
 
 	header( 'X-WP-Total: ' . (int) $total_posts );
 	header( 'X-WP-TotalPages: ' . (int) $max_pages );

@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.0-apache
 
 RUN apt-get update && apt-get upgrade -yy \
     && apt-get install --no-install-recommends apt-utils libjpeg-dev libpng-dev libwebp-dev \

@@ -1,9 +1,6 @@
 {
 	"version": 1,
 	"settings": {
-		"border": {
-			"customRadius": false
-		},
 		"color": {
 			"custom": true,
 			"customDuotone": true,
@@ -212,13 +209,6 @@
 					"size": "42px"
 				}
 			]
-		},
-		"blocks": {
-			"core/button": {
-				"border": {
-					"customRadius": true
-				}
-			}
 		}
 	}
 }

@@ -17122,26 +17122,6 @@ function DuotoneControl({
 
 /* harmony default export */ var duotone_control = (DuotoneControl);
 
-// CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/components/block-list/head.js
-
-
-/**
- * WordPress dependencies
- */
-
-const head_context = Object(external_wp_element_["createContext"])();
-function Head({
-  children
-}) {
-  const [element, setElement] = Object(external_wp_element_["useState"])();
-  return Object(external_wp_element_["createElement"])(head_context.Provider, {
-    value: element
-  }, Object(external_wp_element_["createElement"])("div", {
-    ref: setElement
-  }), children);
-}
-Head.context = head_context;
-
 // CONCATENATED MODULE: ./node_modules/@wordpress/block-editor/build-module/hooks/duotone.js
 
 
@@ -17159,11 +17139,9 @@ Head.context = head_context;
 
 
 
-
 /**
  * Internal dependencies
  */
-
 
 
 const duotone_EMPTY_ARRAY = [];
@@ -17356,12 +17334,11 @@ const withDuotoneStyles = Object(external_wp_compose_["createHigherOrderComponen
   const selectorsScoped = selectors.map(selector => `.${id} ${selector.trim()}`);
   const selectorsGroup = selectorsScoped.join(', ');
   const className = classnames_default()(props === null || props === void 0 ? void 0 : props.className, id);
-  const element = Object(external_wp_element_["useContext"])(Head.context);
-  return Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, element && Object(external_wp_element_["createPortal"])(Object(external_wp_element_["createElement"])(DuotoneFilter, {
+  return Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, Object(external_wp_element_["createElement"])(DuotoneFilter, {
     selector: selectorsGroup,
     id: id,
     values: getValuesFromColors(values)
-  }), element), Object(external_wp_element_["createElement"])(BlockListBlock, Object(esm_extends["a" /* default */])({}, props, {
+  }), Object(external_wp_element_["createElement"])(BlockListBlock, Object(esm_extends["a" /* default */])({}, props, {
     className: className
   })));
 }, 'withDuotoneStyles');
@@ -17392,11 +17369,9 @@ var build_module_icon = __webpack_require__("iClF");
 
 
 
-
 /**
  * Internal dependencies
  */
-
 
 
 
@@ -17561,11 +17536,10 @@ const withLayoutStyles = Object(external_wp_compose_["createHigherOrderComponent
   } = attributes;
   const usedLayout = !!layout && layout.inherit ? defaultLayout : layout;
   const className = classnames_default()(props === null || props === void 0 ? void 0 : props.className, `wp-container-${id}`);
-  const element = Object(external_wp_element_["useContext"])(Head.context);
-  return Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, element && Object(external_wp_element_["createPortal"])(Object(external_wp_element_["createElement"])(LayoutStyle, {
+  return Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, Object(external_wp_element_["createElement"])(LayoutStyle, {
     selector: `.wp-container-${id}`,
     layout: usedLayout
-  }), element), Object(external_wp_element_["createElement"])(BlockListBlock, Object(esm_extends["a" /* default */])({}, props, {
+  }), Object(external_wp_element_["createElement"])(BlockListBlock, Object(esm_extends["a" /* default */])({}, props, {
     className: className
   })));
 });
@@ -28290,7 +28264,6 @@ function BlockSelectionClearer(props) {
 
 
 
-
 const IntersectionObserver = Object(external_wp_element_["createContext"])();
 
 function Root({
@@ -28317,14 +28290,14 @@ function Root({
       isNavigationMode: _isNavigationMode()
     };
   }, []);
-  return Object(external_wp_element_["createElement"])(Head, null, Object(external_wp_element_["createElement"])("div", {
+  return Object(external_wp_element_["createElement"])("div", {
     ref: Object(external_wp_compose_["useMergeRefs"])([useBlockSelectionClearer(), useBlockDropZone(), useInBetweenInserter()]),
     className: classnames_default()('block-editor-block-list__layout is-root-container', className, {
       'is-outline-mode': isOutlineMode,
       'is-focus-mode': isFocusMode && isLargeViewport,
       'is-navigate-mode': isNavigationMode
     })
-  }, children));
+  }, children);
 }
 
 function BlockList({
@@ -39183,11 +39156,12 @@ function useSelectAll() {
         return;
       }
 
-      if (!Object(external_wp_dom_["isEntirelySelected"])(event.target)) {
+      const selectedClientIds = getSelectedBlockClientIds();
+
+      if (selectedClientIds.length === 1 && !Object(external_wp_dom_["isEntirelySelected"])(event.target)) {
         return;
       }
 
-      const selectedClientIds = getSelectedBlockClientIds();
       const [firstSelectedClientId] = selectedClientIds;
       const rootClientId = getBlockRootClientId(firstSelectedClientId);
       let blockClientIds = getBlockOrder(rootClientId); // If we have selected all sibling nested blocks, try selecting up a

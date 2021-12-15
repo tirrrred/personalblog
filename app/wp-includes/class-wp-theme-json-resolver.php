@@ -121,13 +121,14 @@ class WP_Theme_JSON_Resolver {
 		foreach ( $i18n_partial as $property => $partial_child ) {
 			if ( is_numeric( $property ) ) {
 				foreach ( $partial_child as $key => $context ) {
-					$result[] = array(
-						'path'    => $current_path,
-						'key'     => $key,
-						'context' => $context,
+					return array(
+						array(
+							'path'    => $current_path,
+							'key'     => $key,
+							'context' => $context,
+						),
 					);
 				}
-				return $result;
 			}
 			$result = array_merge(
 				$result,
