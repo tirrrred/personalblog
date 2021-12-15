@@ -2,9 +2,9 @@
 /**
  * The base configuration for WordPress
  *
- * The wp-config.php creation script uses this file during the installation.
- * You don't have to use the web site, you can copy this file to "wp-config.php"
- * and fill in the values.
+ * The wp-config.php creation script uses this file during the
+ * installation. You don't have to use the web site, you can
+ * copy this file to "wp-config.php" and fill in the values.
  *
  * This file contains the following configurations:
  *
@@ -19,53 +19,45 @@
  */
 
 // ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define( 'DB_NAME', getenv('DB_NAME')  );
+define( 'DB_NAME', getenv('DB_NAME') );		// The name of the database for WordPress
+define( 'DB_USER', getenv('DB_USER') ); 	// MySQL database username
+define( 'DB_PASSWORD', getenv('DB_PASSWORD') ); 	// MySQL database password
+define( 'DB_HOST', getenv('DB_HOST') ); 	// MySQL hostname
 
-/** MySQL database username */
-define( 'DB_USER', getenv('DB_USER')  );
-
-/** MySQL database password */
-define( 'DB_PASSWORD', getenv('DB_PASSWORD')  );
-
-/** MySQL hostname */
-define( 'DB_HOST', getenv('DB_HOST') );
-
-/** Database charset to use in creating database tables. */
+/** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
-/** The database collate type. Don't change this if in doubt. */
+/** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
+
 /**#@+
- * Authentication unique keys and salts.
+ * Authentication Unique Keys and Salts.
  *
- * Change these to different unique phrases! You can generate these using
- * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
- *
- * You can change these at any point in time to invalidate all existing cookies.
- * This will force all users to have to log in again.
+ * Change these to different unique phrases!
+ * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+ * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         getenv('AUTH_KEY') );
-define( 'SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY') );
-define( 'LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY') );
-define( 'NONCE_KEY',        getenv('NONCE_KEY'));
-define( 'AUTH_SALT',        getenv('AUTH_SALT') );
-define( 'SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT') );
-define( 'LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT') );
-define( 'NONCE_SALT',       getenv('NONCE_SALT') );
+define('AUTH_KEY',         getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY',        getenv('NONCE_KEY'));
+define('AUTH_SALT',        getenv('AUTH_SALT'));
+define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT',       getenv('NONCE_SALT'));
 
 /**#@-*/
 
 /**
- * WordPress database table prefix.
+ * WordPress Database Table prefix.
  *
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = 'Tg36yw_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -80,15 +72,14 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
-// define( 'WP_DEBUG', true );
 
-// define( 'WP_DEBUG_DISPLAY', false );
-
-// define( 'WP_DEBUG_LOG', true );
-
-/* Add any custom values between this line and the "stop editing" line. */
-
-
+/**
+ * configure HTTPS
+ */
+define('FORCE_SSL_ADMIN', true);
+define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+$_SERVER['HTTPS']       = 'on';
+$_SERVER['SERVER_PORT'] = 443;
 
 /* That's all, stop editing! Happy publishing. */
 
